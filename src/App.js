@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{Component} from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
+import Home from "./page/home"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+	
+	componentDidMount(){
+		console.log(233)
+		/*let path = this.props.location.pathname;
+		this.checkRoute(path);
+		//监听history 的地址  判断有无变化
+		this.props.history.listen(()=>{
+			let path = window.location.pathname;
+			this.checkRoute(path);
+			//
+		})*/
+	}
+	render() {
+		return (
+			<React.Fragment>
+				<Switch>
+					<Route path="/home" component={Home}></Route>
+					<Redirect exact from="/" to="/home" />
+				</Switch>
+			</React.Fragment>
+		)
+		
+	}
 }
 
 export default App;
